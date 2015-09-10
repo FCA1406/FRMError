@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfmf:application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adfmf="http://xmlns.oracle.com/adf/mf"
-                   version="1.0" name="FRMError" id="com.company.FRMError" appControllerFolder="ApplicationController"
-                   listener-class="br.com.decade.frmerror.application.LifeCycleListenerImpl"></adfmf:application>
+                   version="1.0.0" name="FRM-Error" id="br.com.decade.FRMError" appControllerFolder="ApplicationController"
+                   listener-class="br.com.decade.frmerror.application.LifeCycleListenerImpl">
+  <adfmf:description>Oracle Forms Error</adfmf:description>
+  <adfmf:featureReference refId="main" id="fr1"/>
+  <adfmf:navigation>
+    <adfmf:navigationBar enabled="false"/>
+  </adfmf:navigation>
+</adfmf:application>
