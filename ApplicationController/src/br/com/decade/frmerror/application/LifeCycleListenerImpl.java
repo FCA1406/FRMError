@@ -1,6 +1,16 @@
 package br.com.decade.frmerror.application;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import java.sql.Connection;
+import java.sql.Statement;
+
 import oracle.adfmf.application.LifeCycleListener;
+import oracle.adfmf.framework.api.AdfmfJavaUtilities;
+import oracle.adfmf.util.Utility;
 
 /**
  * The application life cycle listener provides the basic structure for developers needing
@@ -60,7 +70,13 @@ public class LifeCycleListenerImpl implements LifeCycleListener
    */
   public void start()
   {
-    // Add code here...
+      try {
+          initializeDatabase();
+      } catch (Exception ex) {
+          Utility.ApplicationLogger.severe(ex.getMessage());
+
+          throw new RuntimeException(ex);
+      }
   }
 
   /**
@@ -127,4 +143,54 @@ public class LifeCycleListenerImpl implements LifeCycleListener
   {
     // Add code here...
   }
+
+    private void initializeDatabase() throws Exception {
+        Connection conn = null;
+
+        try {
+            InputStream scriptStream = null;
+
+            String cdRoot = AdfmfJavaUtilities.getDirectoryPathRoot(AdfmfJavaUtilities.ApplicationDirectory);
+            String dbPath = cdRoot + "/FRMErrorDB.db";
+            String conStr = "jdbc:sqlite:" + dbPath;
+
+            File dbFile = new File(dbPath);
+
+            if (dbFile.exists()) {
+                return;
+            }
+
+            conn = new SQLite.JDBCDataSource(conStr).getConnection();
+            conn.setAutoCommit(false);
+
+            scriptStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("META-INF/FRMErrorDB.sql");
+
+            BufferedReader scriptReader = new BufferedReader(new InputStreamReader(scriptStream));
+
+            String nextLine;
+
+            StringBuffer nextStatement = new StringBuffer();
+
+            Statement stmt = conn.createStatement();
+
+            while ((nextLine = scriptReader.readLine()) != null) {
+                if (nextLine.startsWith("REM") || nextLine.startsWith("COMMIT") || nextLine.length() < 1) {
+                    continue;
+                }
+
+                nextStatement.append(nextLine);
+
+                if (nextLine.endsWith(";")) {
+                    stmt.execute(nextStatement.toString());
+
+                    nextStatement = new StringBuffer();
+                }
+            }
+        } finally {
+            if (conn != null) {
+                conn.commit();
+                conn.close();
+            }
+        }
+    }
 }
