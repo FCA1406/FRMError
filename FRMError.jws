@@ -10,11 +10,12 @@
       <value n="oracle.adf.share.dt.migration.wsm.PolicyAttachmentMigratorHelper" v="12.1.2.0.0"/>
       <value n="oracle.adfdt.controller.adfc.source.migration.SavePointDataSourceForWLSMigrator" v="11.1.1.1.0"/>
       <value n="oracle.adfdtinternal.model.ide.security.extension.AdfSecurityMigrator" v="11.1.1.1.0.13"/>
-      <value n="oracle.ide.model.Project" v="11.1.1.1.0;12.1.3.0.0"/>
+      <value n="oracle.ide.model.Project" v="11.1.1.1.0;12.1.3.0.0;12.2.1.0.0"/>
       <value n="oracle.jbo.dt.jdevx.deployment.JbdProjectMigrator" v="11.1.2.0.0"/>
+      <value n="oracle.jdeveloper.maven.migrator.POMNodeMigrator" v="12.2.1.0.0"/>
       <value n="oracle.jdevimpl.appresources.ApplicationSrcDirMigrator" v="11.1.2.0.0"/>
       <value n="oracle.jdevimpl.deploy.migrators.JeeDeploymentMigrator" v="12.1.2.0.0"/>
-      <value n="oracle.jdevimpl.xml.oc4j.jps.JpsConfigMigratorHelper" v="11.1.1.1.0.1"/>
+      <value n="oracle.jdevimpl.xml.oc4j.jps.JpsConfigMigratorHelper" v="11.1.1.1.0.1;12.1.4.0.0"/>
       <value n="oracle.jdevimpl.xml.wl.WeblogicMigratorHelper" v="11.1.1.1.0"/>
       <value n="oracle.mds.internal.dt.deploy.base.MarMigratorHelper" v="11.1.1.1.0"/>
       <value n="oracle.mds.internal.dt.ide.migrator.MDSConfigMigratorHelper" v="11.1.1.0.5313"/>
@@ -37,8 +38,8 @@
             <hash n="android_options">
                <value n="android_deploy_debug_mode" v="false"/>
                <value n="application_bundle_id" v="br.com.decade.frmerror"/>
-               <value n="version_code" v="2"/>
-               <value n="version_name" v="2.0.0"/>
+               <value n="version_code" v="3"/>
+               <value n="version_name" v=""/>
             </hash>
             <hash n="archiveOptions">
                <value n="hasManifest" v="true"/>
@@ -126,8 +127,8 @@
             <hash n="iosDeploymentOptions">
                <value n="appBundleId" v="br.com.decade.frmerror"/>
                <value n="debugFlag" v="false"/>
-               <value n="simulatorDeviceId" v="2E68B70B-0E17-4AFD-8AB0-D6EBED3EBCC9"/>
-               <value n="simulatorTarget" v="iPhone 4s (iOS 9.2 - iPhone 4s)"/>
+               <value n="simulatorDeviceId" v="1A2191EE-7E78-4BB7-BEFD-06946B64D85E"/>
+               <value n="simulatorTarget" v="iPhone 4s (iOS 9.3 - iPhone 4s)"/>
             </hash>
             <url n="jarURL" path="deploy/iOS/iOS.jar/"/>
             <hash n="mnfImageOptions">
